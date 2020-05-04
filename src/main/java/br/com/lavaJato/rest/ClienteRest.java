@@ -44,8 +44,8 @@ public class ClienteRest{
 
     @PatchMapping
     @ApiOperation(value="Altera os dados de um cliente especifico")
-    public void alterarCliente(@RequestBody Cliente cliente){
-        clienteService.save(cliente);
+    public Cliente alterarCliente(@RequestBody Cliente cliente){
+        return clienteService.save(cliente);
     }
 
 
