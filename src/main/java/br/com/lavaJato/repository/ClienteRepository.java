@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ClienteRepository  extends JpaRepository<Cliente, Long> {
 	@Query("select c from Cliente c where c.cpfCnpj = ?1")
-	Cliente findPessoaByCpfCnpj(Long cpfCnpj);
+	Cliente findPessoaByCpfCnpj(String cpfCnpj);
 }

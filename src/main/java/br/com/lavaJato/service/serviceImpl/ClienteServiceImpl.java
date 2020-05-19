@@ -40,7 +40,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
 	@Override
-	public Cliente findByCpfCnpj(Long cpfCnpj) {
+	public Cliente findByCpfCnpj(String cpfCnpj) {
 		Cliente cliente =  clienteRepository.findPessoaByCpfCnpj(cpfCnpj);
 		return cliente;
 	}

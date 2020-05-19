@@ -45,7 +45,7 @@ public class ClienteRest{
     }
     
     @GetMapping(value = "/cpf/{cpfCnpj}")
-    public boolean buscarcpf(@PathVariable Long cpfCnpj ) {
+    public boolean buscarcpf(@PathVariable String cpfCnpj ) {
     	//cpfCnpj = 765659452L;
     	Cliente cliente = clienteService.findByCpfCnpj(cpfCnpj);
     	if(cliente != null) {
