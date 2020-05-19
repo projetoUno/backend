@@ -23,13 +23,13 @@ public class Cliente {
     private String email;
 
     @Min(value=0)
-    private  Long telefone;
+    private  String telefone;
 
     @Min(value=0)
-    private int ddd;
+    private String ddd;
 
     @Min(value=0)
-    private Long cpfCnpj;
+    private String cpfCnpj;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private String dataNascimento;
@@ -79,19 +79,19 @@ public class Cliente {
         this.email = email;
     }
 
-    public Long getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Long telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public Long getCpfCnpj() {
+    public String getCpfCnpj() {
         return cpfCnpj;
     }
 
-    public void setCpfCnpj(Long cpfCnpj) {
+    public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
 
@@ -143,11 +143,11 @@ public class Cliente {
         this.bairro = bairro;
     }
 
-    public int getDdd() {
+    public String getDdd() {
         return ddd;
     }
 
-    public void setDdd(int ddd) {
+    public void setDdd(String ddd) {
         this.ddd = ddd;
     }
 }
