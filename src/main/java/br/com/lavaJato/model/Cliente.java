@@ -22,13 +22,13 @@ public class Cliente {
     @Email(message = "{email.not.valid}")
     private String email;
 
-    @Min(value=0)
+    
     private  String telefone;
 
-    @Min(value=0)
+    
     private String ddd;
 
-    @Min(value=0)
+    
     private String cpfCnpj;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
