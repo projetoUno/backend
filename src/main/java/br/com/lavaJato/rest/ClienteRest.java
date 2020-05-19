@@ -5,8 +5,10 @@ import br.com.lavaJato.service.ClienteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,27 +28,41 @@ public class ClienteRest{
 
     @GetMapping("/{idCliente}")
     @ApiOperation(value = "Retorna um cliente especifico pelo ID")
-    public Cliente detalharCliente(@RequestParam long idCliente){
+    public Cliente detalharCliente(@Valid @PathVariable("idCliente")Long idCliente){
         return clienteService.findById(idCliente);
     }
 
     @PostMapping
     @ApiOperation(value = "salva um cliente")
-    public void incluirClientes(@RequestBody Cliente cliente){
+    public void incluirClientes(@Valid @RequestBody Cliente cliente){
          clienteService.save(cliente);
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "/{idCliente}")
     @ApiOperation(value = "Exclui um cliente especifico pelo ID")
-    public void excluirCliente(@RequestParam long idCLiente){
-        clienteService.delete(idCLiente);
+    public void excluirCliente(@Valid @PathVariable Long idCliente){
+        clienteService.delete(idCliente);
     }
+    
+    @GetMapping(value = "/cpf/{cpfCnpj}")
+    public boolean buscarcpf(@PathVariable Long cpfCnpj ) {
+    	//cpfCnpj = 765659452L;
+    	Cliente cliente = clienteService.findByCpfCnpj(cpfCnpj);
+    	if(cliente != null) {
+    		return true;
+    	}else {
+    		return false;
+    	}
+    	
+    }
+    
 
-    @PatchMapping
+  /*  @PutMapping("/{id}")
     @ApiOperation(value="Altera os dados de um cliente especifico")
-    public Cliente alterarCliente(@RequestBody Cliente cliente){
+    public Cliente alterarCliente(@Valid @PathVariable(value = "id") Long id, @RequestBody Cliente cliente){
+    	Cliente cli = this.detalharCliente(id);
         return clienteService.save(cliente);
     }
-
+*/
 
 }

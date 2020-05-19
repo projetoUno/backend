@@ -20,7 +20,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente findById(long idCliente) {
+    public Cliente findById(Long idCliente) {
         return clienteRepository.findById(idCliente).get();
     }
 
@@ -30,7 +30,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public void delete(long idCliente) {
+    public void delete(Long idCliente) {
         clienteRepository.deleteById(idCliente);
     }
 
@@ -38,4 +38,10 @@ public class ClienteServiceImpl implements ClienteService {
     public void update(Cliente cliente) {
         clienteRepository.save(cliente);
     }
+
+	@Override
+	public Cliente findByCpfCnpj(Long cpfCnpj) {
+		Cliente cliente =  clienteRepository.findPessoaByCpfCnpj(cpfCnpj);
+		return cliente;
+	}
 }

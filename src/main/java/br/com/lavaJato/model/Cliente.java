@@ -1,10 +1,10 @@
 package br.com.lavaJato.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
@@ -13,21 +13,22 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @NumberFormat
     private Long id_cliente;
 
-    @NotBlank
+    @NotEmpty(message = "{name.not.blank}")
     private String nome;
 
-    @NotBlank
+    @Email(message = "{email.not.valid}")
     private String email;
 
-    @NotNull
+    @Min(value=0)
     private  Long telefone;
 
-    @NotNull
+    @Min(value=0)
     private int ddd;
 
-    @NotNull
+    @Min(value=0)
     private Long cpfCnpj;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
@@ -35,7 +36,7 @@ public class Cliente {
 
     private String sexo;
 
-    @NotBlank
+    @NotBlank(message = "{mandatory.not.blank}")
     private String endereco;
 
     private String complemento;
@@ -43,6 +44,16 @@ public class Cliente {
     private int numero;
 
     private String bairro;
+    
+    private String cep;
+    
+    public void setCep(String cep) {
+		this.cep = cep;
+	}
+    
+    public String getCep() {
+		return cep;
+	}
 
     public Long getId_cliente() {
         return id_cliente;
